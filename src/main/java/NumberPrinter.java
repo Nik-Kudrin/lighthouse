@@ -4,15 +4,13 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class NumberPrinter {
     private final StringBuilder stringBuilder = new StringBuilder();
     private int counter = 1;
-    private final ReentrantLock lock = new ReentrantLock();
     private final ExecutorService poolExecutor = Executors.newCachedThreadPool();
 
-    private class CounterExecutor implements Callable, Runnable {
+    private class CounterExecutor implements Callable {
 
         @Override
         public Object call() {
@@ -22,11 +20,6 @@ public class NumberPrinter {
                         .append(System.lineSeparator());
             }
             return null;
-        }
-
-        @Override
-        public void run() {
-            call();
         }
     }
 
