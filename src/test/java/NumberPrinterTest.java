@@ -11,6 +11,7 @@ public class NumberPrinterTest {
         new NumberPrinter().printNumberUsingThread(1_000_000);
     }
 
+    // Will fail on Arrays.fill because of huge number
     @Test
     void maxIntValueTest() throws InterruptedException {
         new NumberPrinter().printNumberUsingThread(Integer.MAX_VALUE);
@@ -29,6 +30,6 @@ public class NumberPrinterTest {
 
     @Test
     void recursive_hugeIntValueTest() {
-        NumberPrinter.printNumbersRecursive(20_000);
+        NumberPrinter.printNumbersRecursive(10_000);
     }
 }
